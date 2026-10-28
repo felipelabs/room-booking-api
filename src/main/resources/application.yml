@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: room-booking-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bookings}
+    username: ${DB_USERNAME:bookings}
+    password: ${DB_PASSWORD:bookings}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+server:
+  port: ${SERVER_PORT:8080}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
